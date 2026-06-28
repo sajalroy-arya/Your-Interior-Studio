@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rishi Home Interior | Minimalist Elegance</title>
+    <title>Rishi Home Interior | Luxury Interior Design</title>
     <meta name="description" content="Award-winning interior design and modular kitchen services in Noida.">
     
+    <!-- Google Fonts: Inter & Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -24,7 +25,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section (Immersive with left floating card) -->
+    <!-- Hero Section -->
     <header class="hero" id="home">
         <div class="hero-bg">
             <img src="assets/hero_bg.png" alt="Premium Architecture">
@@ -32,8 +33,8 @@
         <div class="hero-container">
             <div class="hero-card slide-in-left">
                 <div class="badge">Noida, UP</div>
-                <h2 class="hero-title">Redefining<br>Space.</h2>
-                <p class="hero-subtitle">Meticulously crafted interiors and modular kitchens, designed for those who appreciate understated elegance.</p>
+                <h2 class="hero-title">Timeless<br>Elegance.</h2>
+                <p class="hero-subtitle">Meticulously crafted interiors and modular kitchens, designed for those who appreciate the extraordinary.</p>
                 <div class="hero-actions">
                     <a href="#booking" class="btn btn-primary">Book Consultation</a>
                 </div>
@@ -41,31 +42,13 @@
         </div>
     </header>
 
-    <!-- Stats Section (Visual Hierarchy) -->
-    <section class="stats-section section">
-        <div class="stats-grid">
-            <div class="stat-item fade-in-up">
-                <span class="stat-number">5.0</span>
-                <span class="stat-label">Google Rating</span>
-            </div>
-            <div class="stat-item fade-in-up" style="transition-delay: 0.1s">
-                <span class="stat-number">630+</span>
-                <span class="stat-label">Happy Homeowners</span>
-            </div>
-            <div class="stat-item fade-in-up" style="transition-delay: 0.2s">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Custom Designs</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section (Split Layout) -->
-    <section class="philosophy section">
+    <!-- NEW: About Section -->
+    <section class="about section" id="about">
         <div class="split-layout">
             <div class="split-text slide-in-left">
-                <span class="section-kicker">Our Philosophy</span>
-                <h3>The art of subtraction.</h3>
-                <p>We believe true luxury lies in simplicity. By removing the unnecessary, we allow the essential architecture of your home to breathe, creating spaces that feel vast, serene, and uniquely yours.</p>
+                <span class="section-kicker">About Us</span>
+                <h3>Crafting legacy through design.</h3>
+                <p>At Rishi Home Interior, we don't just fill rooms with furniture; we sculpt environments that reflect your highest aspirations. With over a decade of redefining spaces in Noida, our obsession with detail and quality remains unmatched.</p>
                 <a href="#portfolio" class="btn-link">View our aesthetic</a>
             </div>
             <div class="split-image slide-in-right">
@@ -74,77 +57,138 @@
         </div>
     </section>
 
-    <!-- Portfolio Section (Horizontal Scroll on Mobile) -->
-    <section class="portfolio section" id="portfolio">
-        <div class="section-header fade-in-up">
-            <span class="section-kicker">Portfolio</span>
-            <h3>Selected Works</h3>
+    <!-- Stats Section -->
+    <section class="stats-section section">
+        <div class="stats-grid">
+            <div class="stat-item fade-in-up">
+                <span class="stat-number">5.0</span>
+                <span class="stat-label">Google Rating</span>
+            </div>
+            <div class="stat-item fade-in-up" style="transition-delay: 0.1s">
+                <span class="stat-number">630+</span>
+                <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat-item fade-in-up" style="transition-delay: 0.2s">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Years Expertise</span>
+            </div>
         </div>
-        <div class="portfolio-scroll-container">
-            <div class="portfolio-grid">
-                <div class="portfolio-card fade-in-up">
-                    <div class="img-wrapper">
-                        <img src="assets/kitchen.png" alt="Modular Kitchens" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h4>Kitchens</h4>
-                        <p>Functional Precision</p>
-                    </div>
+    </section>
+
+    <!-- Enhanced Portfolio Section -->
+    <section class="portfolio section" id="portfolio">
+        <div class="section-header portfolio-header-flex fade-in-up">
+            <div>
+                <span class="section-kicker">Portfolio</span>
+                <h3>Selected Works</h3>
+            </div>
+            
+            <!-- Filters & Controls -->
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 16px;">
+                <div class="portfolio-controls">
+                    <button class="scroll-btn" id="scrollLeft" aria-label="Scroll Left">←</button>
+                    <button class="scroll-btn" id="scrollRight" aria-label="Scroll Right">→</button>
                 </div>
-                <div class="portfolio-card fade-in-up" style="transition-delay: 0.1s;">
+                <div class="portfolio-filters" id="portfolioFilters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="residential">Residential</button>
+                    <button class="filter-btn" data-filter="commercial">Commercial</button>
+                    <button class="filter-btn" data-filter="office">Office</button>
+                    <button class="filter-btn" data-filter="hospital">Hospital</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-scroll-container" id="portfolioScroll">
+            <div class="portfolio-grid" id="portfolioGrid">
+                <div class="portfolio-card fade-in-up" data-category="residential">
                     <div class="img-wrapper">
                         <img src="assets/bedroom.png" alt="Bedrooms" loading="lazy">
                     </div>
                     <div class="card-content">
-                        <h4>Bedrooms</h4>
-                        <p>Serene Sanctuaries</p>
+                        <h4>Master Suites</h4>
+                        <p>Residential</p>
                     </div>
                 </div>
-                <!-- Reusing living room image for a third card just to fill the grid -->
-                <div class="portfolio-card fade-in-up" style="transition-delay: 0.2s;">
+                <div class="portfolio-card fade-in-up" data-category="residential">
+                    <div class="img-wrapper">
+                        <img src="assets/kitchen.png" alt="Modular Kitchens" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h4>Culinary Spaces</h4>
+                        <p>Residential</p>
+                    </div>
+                </div>
+                <div class="portfolio-card fade-in-up" data-category="office commercial">
                     <div class="img-wrapper">
                         <img src="assets/living_room.png" alt="Living Spaces" loading="lazy">
                     </div>
                     <div class="card-content">
-                        <h4>Living Spaces</h4>
-                        <p>Architectural Elegance</p>
+                        <h4>Executive Lounges</h4>
+                        <p>Commercial & Office</p>
+                    </div>
+                </div>
+                <div class="portfolio-card fade-in-up" data-category="hospital commercial">
+                    <div class="img-wrapper">
+                        <img src="assets/hero_bg.png" alt="Hospitality" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h4>Atriums & Lobbies</h4>
+                        <p>Hospital & Commercial</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services section" id="services">
+    <!-- NEW: How We Work Section -->
+    <section class="process section" id="process">
         <div class="section-header fade-in-up">
-            <span class="section-kicker">Services</span>
-            <h3>Our Expertise</h3>
+            <span class="section-kicker">Process</span>
+            <h3>How We Work</h3>
         </div>
-        <div class="services-grid fade-in-up">
-            <div class="service-item">
-                <span class="service-number">01</span>
-                <h4>Modular Kitchens</h4>
-                <p>Precision-engineered, highly functional culinary spaces tailored to your workflow.</p>
+        <div class="process-grid fade-in-up">
+            <div class="process-step">
+                <span class="step-number">01</span>
+                <h4>Discovery</h4>
+                <p>We begin with a deep dive into your lifestyle, aesthetic preferences, and the architectural possibilities of your space.</p>
             </div>
-            <div class="service-item">
-                <span class="service-number">02</span>
-                <h4>Architectural Design</h4>
-                <p>Structural planning and spatial optimization for a cohesive home environment.</p>
+            <div class="process-step">
+                <span class="step-number">02</span>
+                <h4>Design Concept</h4>
+                <p>Our architects create bespoke 3D visualizations and source premium materials tailored to your unique vision.</p>
             </div>
-            <div class="service-item">
-                <span class="service-number">03</span>
-                <h4>Living & Bedrooms</h4>
-                <p>Bespoke furniture and holistic room planning designed for deep relaxation.</p>
-            </div>
-            <div class="service-item">
-                <span class="service-number">04</span>
-                <h4>Office Interiors</h4>
-                <p>Modern workspaces designed for deep focus and executive presence.</p>
+            <div class="process-step">
+                <span class="step-number">03</span>
+                <h4>Execution</h4>
+                <p>Flawless implementation by our master craftsmen, ensuring the final result mirrors the design with absolute precision.</p>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof / Reviews Section (Refined) -->
+    <!-- NEW: Why Choose Us (Dark Section) -->
+    <section class="section dark" id="why-us">
+        <div class="section-header fade-in-up">
+            <span class="section-kicker">Why Rishi Interior</span>
+            <h3>The Standard of Excellence</h3>
+        </div>
+        <div class="why-us-grid fade-in-up">
+            <div class="why-item">
+                <h4>Uncompromising Quality</h4>
+                <p>We source only the finest materials, ensuring your interiors are not just beautiful, but built to last generations.</p>
+            </div>
+            <div class="why-item">
+                <h4>100% Transparency</h4>
+                <p>No hidden costs, no surprises. Our pricing structure is completely clear from the initial consultation.</p>
+            </div>
+            <div class="why-item">
+                <h4>Timeline Guarantee</h4>
+                <p>We respect your time. Our project management system ensures your home is delivered exactly when promised.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Reviews -->
     <section class="reviews section" id="reviews">
         <div class="split-layout reverse">
             <div class="split-text slide-in-right">
@@ -160,7 +204,6 @@
                 </div>
             </div>
             <div class="split-image slide-in-left">
-                <!-- Using kitchen image here to showcase work alongside reviews -->
                 <img src="assets/kitchen.png" alt="Quality Workmanship" loading="lazy">
             </div>
         </div>
@@ -182,6 +225,16 @@
                     <label for="phone">Phone</label>
                     <input type="tel" id="phone" required>
                 </div>
+                <div class="input-group">
+                    <label for="service">Interested In</label>
+                    <select id="service" required>
+                        <option value="">Select a category...</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="office">Office</option>
+                        <option value="hospital">Hospital / Clinic</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary submit-btn">Submit Request</button>
             </form>
         </div>
@@ -192,7 +245,7 @@
         <div class="footer-logo">Rishi<span>Interior</span></div>
         <p>First floor, G - 97, Sector 9, Noida</p>
         <p>098104 81819</p>
-        <p style="margin-top: 16px;">&copy; <span id="year"></span>. All rights reserved.</p>
+        <p style="margin-top: 24px;">&copy; <span id="year"></span>. All rights reserved.</p>
     </footer>
 
     <!-- Custom JS -->

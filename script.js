@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Stop observing once animated
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -25,7 +25,66 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Form submission handling
+    // --- Portfolio Filtering Logic ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active to clicked
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            portfolioCards.forEach(card => {
+                const categories = card.getAttribute('data-category').split(' ');
+                
+                if (filterValue === 'all' || categories.includes(filterValue)) {
+                    card.classList.remove('hidden');
+                    // Small timeout to allow display:block to register before changing opacity
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    // Wait for transition to finish before hiding
+                    setTimeout(() => {
+                        card.classList.add('hidden');
+                    }, 400); // Matches CSS transition time
+                }
+            });
+        });
+    });
+
+    // --- Portfolio Scroll Arrows ---
+    const scrollContainer = document.getElementById('portfolioScroll');
+    const scrollLeftBtn = document.getElementById('scrollLeft');
+    const scrollRightBtn = document.getElementById('scrollRight');
+
+    if (scrollContainer && scrollLeftBtn && scrollRightBtn) {
+        // Scroll amount is roughly one card width + gap
+        const scrollAmount = 350; 
+
+        scrollLeftBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // --- Form submission simulation ---
     const form = document.getElementById('consultationForm');
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -34,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitBtn = form.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             
-            // Simulate processing
             submitBtn.textContent = 'Sending Request...';
             submitBtn.disabled = true;
             
@@ -45,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 form.reset();
                 
-                // Reset button after 3 seconds
                 setTimeout(() => {
                     submitBtn.style.backgroundColor = '';
                     submitBtn.style.color = '';
